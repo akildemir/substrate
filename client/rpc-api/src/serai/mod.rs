@@ -1,6 +1,5 @@
 // This file is part of a fork of Substrate which has had various changes.
 
-// Copyright (C) Parity Technologies (UK) Ltd.
 // Copyright (C) 2022-2023 Luke Parker
 // SPDX-License-Identifier: GPL-3.0-or-later WITH Classpath-exception-2.0
 
@@ -17,31 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-//! Substrate RPC implementation.
-//!
-//! A core implementation of Substrate RPC interfaces.
+//! Substrate Serai API.
 
-#![warn(missing_docs)]
+use jsonrpsee::{core::RpcResult, proc_macros::rpc};
 
-pub use jsonrpsee::core::{
-	id_providers::{
-		RandomIntegerIdProvider as RandomIntegerSubscriptionId,
-		RandomStringIdProvider as RandomStringSubscriptionId,
-	},
-	traits::IdProvider as RpcSubscriptionIdProvider,
-};
-pub use sc_rpc_api::DenyUnsafe;
-
-pub mod author;
-pub mod chain;
-pub mod dev;
-pub mod offchain;
-pub mod state;
-pub mod system;
-pub mod serai;
-
-#[cfg(any(test, feature = "test-helpers"))]
-pub mod testing;
-
-/// Task executor that is being used by RPC subscriptions.
-pub type SubscriptionTaskExecutor = std::sync::Arc<dyn sp_core::traits::SpawnNamed>;
+#[rpc(client, server)]
+pub trait SeraiApi {
+	/// Get address for a network
+	#[method(name = "serai_getNetworkAddress", blocking)]
+	fn network_address(&self, network: String) -> RpcResult<String>;
+}

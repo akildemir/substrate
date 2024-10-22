@@ -7917,6 +7917,7 @@ dependencies = [
  "sp-rpc",
  "sp-runtime",
  "sp-session",
+ "sp-validator-sets",
  "sp-version",
  "substrate-test-runtime-client",
  "tokio",
@@ -9465,6 +9466,14 @@ dependencies = [
  "trie-db",
  "trie-root",
  "trie-standardmap",
+]
+
+[[package]]
+name = "sp-validator-sets"
+version = "0.1.0"
+dependencies = [
+ "sp-api",
+ "sp-std",
 ]
 
 [[package]]

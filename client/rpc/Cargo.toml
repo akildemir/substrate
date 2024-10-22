@@ -35,6 +35,7 @@ sp-rpc = { version = "6", path = "../../primitives/rpc" }
 sp-runtime = { version = "24", path = "../../primitives/runtime" }
 sp-session = { version = "4.0.0-dev", path = "../../primitives/session" }
 sp-version = { version = "22", path = "../../primitives/version" }
+sp-validator-sets = { path = "../../primitives/validator-sets" }
 
 tokio = "1"
 
